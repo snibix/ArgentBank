@@ -1,17 +1,17 @@
 import clsx from "clsx";
 import PropTypes from "prop-types";
 
-function Button({ type, label, className }) {
+function Button({ type = "button", children, className }) {
   return (
     <button className={clsx("btn", className)} type={type}>
-      {label}{" "}
+      {children}
     </button>
   );
 }
 
 Button.propTypes = {
   type: PropTypes.string,
-  label: PropTypes.string,
+  children: PropTypes.any,
   className: PropTypes.any,
 };
 
