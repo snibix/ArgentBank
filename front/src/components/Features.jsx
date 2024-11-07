@@ -1,8 +1,6 @@
-import {
-  default as iconChat,
-  default as iconMoney,
-  default as iconSecurity,
-} from "../assets/img/icon-chat.png";
+import iconChat from "../assets/img/icon-chat.png";
+import iconMoney from "../assets/img/icon-money.png";
+import iconSecurity from "../assets/img/icon-security.png";
 import Feature from "./Feature";
 
 function Features() {
