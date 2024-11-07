@@ -3,10 +3,10 @@ import Hero from "../components/Hero";
 
 function Home() {
   return (
-    <>
+    <main>
       <Hero />
       <Features />
-    </>
+    </main>
   );
 }
 export default Home;
