@@ -9,10 +9,9 @@ function SignIn() {
       <Input name="username" type="text" />
       <Input name="password" type="password" />
       <Checkbox name="remember-me" label="Remember me" />
-      <a href="./user.html" className="sign-in-button">
+      <button className="sign-in-button" type="submit">
         Sign In
-      </a>
-      <button className="sign-in-button">Sign In</button>
+      </button>
     </form>
   );
 }
