@@ -1,10 +1,12 @@
-import React from "react";
-import PropTypes from "prop-types";
+import Features from "../components/Features";
+import Hero from "../components/Hero";
 
 function Home() {
-  return <div>Home</div>;
+  return (
+    <>
+      <Hero />
+      <Features />
+    </>
+  );
 }
-
-Home.propTypes = {};
-
 export default Home;
