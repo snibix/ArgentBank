@@ -1,3 +1,4 @@
+import Button from "../Button";
 import Checkbox from "../Checkbox";
 import Input from "../Input";
 
@@ -9,9 +10,7 @@ function SignIn() {
       <Input name="username" type="text" />
       <Input name="password" type="password" />
       <Checkbox name="remember-me" label="Remember me" />
-      <button className="sign-in-button" type="submit">
-        Sign In
-      </button>
+      <Button type="submit" label="Sign In" className="sign-in-button" />
     </form>
   );
 }
