@@ -1,7 +1,8 @@
 import PropTypes from "prop-types";
+import nanoid from "../utils/nanoid";
 
 function Checkbox({ name, label }) {
-  const id = name + "-" + Math.floor(Math.random() * 10000);
+  const id = nanoid(name);
   return (
     <div className="input-remember">
       <input type="checkbox" id={id} name={name} />
