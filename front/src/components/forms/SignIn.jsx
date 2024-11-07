@@ -1,5 +1,5 @@
-import Checkbox from "./Checkbox";
-import Input from "./Input";
+import Checkbox from "../Checkbox";
+import Input from "../Input";
 
 function SignIn() {
   return (
