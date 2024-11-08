@@ -4,7 +4,7 @@ import Button from "./Button";
 
 function UserHeader() {
   const auth = useSelector((state) => state.auth);
-  const isAuth = auth.token && auth.status === "success";
+  const isAuth = auth.token;
 
   if (!isAuth) {
     return <Navigate to="/login" />;

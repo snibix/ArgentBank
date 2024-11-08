@@ -3,7 +3,7 @@ import { Navigate, Outlet } from "react-router-dom";
 
 function Private() {
   const auth = useSelector((state) => state.auth);
-  const isAuth = auth.token && auth.status === "success";
+  const isAuth = auth.token;
 
   return isAuth ? <Outlet /> : <Navigate to="/login" />;
 }
