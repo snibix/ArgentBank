@@ -32,8 +32,6 @@ export const useFetch = () => {
 
       const response = await fetch(`${API_URL}${endpoint}`, config);
 
-      console.log("Response:::", response);
-
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }

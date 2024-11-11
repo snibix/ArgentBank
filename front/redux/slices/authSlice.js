@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { updateUser } from "./updateUser";
 
-const authSLice = createSlice({
+const authSlice = createSlice({
   name: "auth",
   initialState: {
     user: null,
@@ -16,8 +17,31 @@ const authSLice = createSlice({
       state.user = null;
       state.token = null;
     },
+    setUser(state, action) {
+      state.user = action.payload.user;
+    },
+  },
+  extraReducers: (builder) => {
+    builder
+      .addCase(updateUser.pending, (state) => {
+        state.status = "loading";
+      })
+      .addCase(updateUser.fulfilled, (state, action) => {
+        state.status = "succeeded";
+        state.user = {
+          ...state.user,
+          firstName: action.payload.firstName,
+          lastName: action.payload.lastName,
+        };
+      })
+      .addCase(updateUser.rejected, (state, action) => {
+        state.status = "failed";
+        state.error = action.payload;
+      });
   },
 });
-export const { loginAction } = authSLice.actions;
-export const { logout } = authSLice.actions;
-export default authSLice.reducer;
+
+export const { loginAction } = authSlice.actions;
+export const { logout } = authSlice.actions;
+export const { setUser } = authSlice.actions;
+export default authSlice.reducer;

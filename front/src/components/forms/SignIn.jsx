@@ -33,19 +33,22 @@ function SignIn() {
       <i className="fa fa-user-circle sign-in-icon"></i>
       <h1>Sign In</h1>
 
-      {loginError && (
-        <div className="error-message" style={{ color: "red" }}>
-          {loginError}
-        </div>
-      )}
-      {error && (
-        <div className="error-message" style={{ color: "red" }}>
-          {error}
+      {(loginError || error) && (
+        <div
+          className="error-message"
+          style={{ color: "red", fontSize: "14px" }}
+        >
+          email ou mot de passe invalid. Veuillez réessayer
         </div>
       )}
 
       <Input name="username" type="text" minLenght={2} required={true} />
-      <Input name="password" type="password" minLenght={2} required={true} />
+      <Input
+        name="password"
+        type="current-password"
+        minLenght={2}
+        required={true}
+      />
       <Checkbox name="remember-me" label="Remember me" />
       <Button type="submit" className="sign-in-button">
         {isLoading ? "Connecting..." : "Sign In"}
