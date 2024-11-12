@@ -1,21 +1,11 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useSelector } from "react-redux";
-import { Navigate } from "react-router-dom";
 import Button from "./Button";
 import ProfileEdit from "./forms/ProfileEdit";
 
 function UserHeader() {
-  const auth = useSelector((state) => state.auth);
-  const isAuth = auth.token;
+  const { user } = useSelector((state) => state.auth);
   const [isEditing, setIsEditing] = useState(false);
-
-  useEffect(() => {
-    console.log("Informations utilisateur dans UserHeader :", auth.user);
-  }, [auth.user]);
-
-  if (!isAuth) {
-    return <Navigate to="/login" />;
-  }
 
   const handleEditClick = () => {
     setIsEditing(true);
@@ -28,7 +18,7 @@ function UserHeader() {
         {!isEditing && (
           <>
             <br />
-            {auth.user?.firstName} {auth.user?.lastName}!
+            {user.firstName} {user.lastName}!
           </>
         )}
       </h1>
@@ -36,8 +26,8 @@ function UserHeader() {
       {isEditing ? (
         <ProfileEdit
           onClose={() => setIsEditing(false)}
-          currentFirstName={auth.user?.firstName}
-          currentLastName={auth.user?.lastName}
+          currentFirstName={user.firstName}
+          currentLastName={user.lastName}
         />
       ) : (
         <Button className="edit-button" type="button" onClick={handleEditClick}>

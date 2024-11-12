@@ -19,10 +19,9 @@ function SignIn() {
     login(credentials)
       .then(() => {
         navigate("/user");
-        console.log("login accept");
       })
       .catch((e) => {
-        console.error("Erreur de connexion :", e);
+        console.error(e);
       });
   };
 
@@ -40,10 +39,22 @@ function SignIn() {
         </div>
       )}
 
-      <Input name="username" type="text" minLength={2} required />
-      <Input name="password" type="current-password" minLength={2} required />
+      <Input
+        name="username"
+        type="text"
+        minLength={2}
+        required
+        disabled={isLoading}
+      />
+      <Input
+        name="password"
+        type="current-password"
+        minLength={2}
+        required
+        disabled={isLoading}
+      />
       <Checkbox name="remember-me" label="Remember me" />
-      <Button type="submit" className="sign-in-button">
+      <Button type="submit" className="sign-in-button" disabled={isLoading}>
         {isLoading ? "Connecting..." : "Sign In"}
       </Button>
     </form>

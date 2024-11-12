@@ -1,9 +1,14 @@
 import clsx from "clsx";
 import PropTypes from "prop-types";
 
-function Button({ type = "button", children, className, onClick }) {
+function Button({ type = "button", children, className, onClick, ...args }) {
   return (
-    <button className={clsx("btn", className)} type={type} onClick={onClick}>
+    <button
+      className={clsx("btn", className)}
+      type={type}
+      onClick={onClick}
+      {...args}
+    >
       {children}
     </button>
   );

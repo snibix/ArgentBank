@@ -18,7 +18,6 @@ export const fetchData = async (
   };
 
   const response = await fetch(`${API_URL}${endpoint}`, config);
-  console.log(response);
   if (response.status !== 200) {
     throw response;
   }
