@@ -1,31 +1,31 @@
 import PropTypes from "prop-types";
-import { useDispatch, useSelector } from "react-redux";
-import { updateUser } from "../../../redux/thunks/updateUser.js";
+import { useSelector } from "react-redux";
+import useUpdateProfil from "../../../services/useUpdateProfil.js";
 
 function ProfileEdit({ onClose }) {
-  const dispatch = useDispatch();
-
-  const user = useSelector((state) => state.auth.user);
-
+  const { user } = useSelector((state) => state.auth);
+  const { updateProfil, isLoading, isError, error } = useUpdateProfil();
+  // TODO: -faire les cas d'erreur du form
+  //TODO: empecher l'utilisateur lors du chargement
+  //TODO: modifier le style des message d'erreur et le style du profilEdit
   const handleSubmit = async (e) => {
     e.preventDefault();
     const profil = {
       firstName: e.target["firstName"].value,
       lastName: e.target["lastName"].value,
     };
-    dispatch(updateUser(profil))
-      .unwrap()
+    updateProfil(profil)
       .then(() => {
         onClose();
       })
       .catch((e) => {
-        console.error("Erreur lors de la mise à jour du profil:", e);
+        console.error(e);
       });
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <div>
+    <form onSubmit={handleSubmit} className="form-edit-user">
+      <div className="input-edit">
         <input
           name="firstName"
           type="text"
@@ -34,6 +34,7 @@ function ProfileEdit({ onClose }) {
           placeholder={user.firstName}
           label="First Name"
         />
+
         <input
           name="lastName"
           type="text"
@@ -43,10 +44,12 @@ function ProfileEdit({ onClose }) {
           label="Last Name"
         />
       </div>
-      <button type="submit">Save</button>
-      <button type="button" onClick={onClose}>
-        Cancel
-      </button>
+      <div className="buttonsEdit">
+        <button type="submit">Save</button>
+        <button type="button" onClick={onClose}>
+          Cancel
+        </button>
+      </div>
     </form>
   );
 }

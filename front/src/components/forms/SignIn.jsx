@@ -30,14 +30,7 @@ function SignIn() {
       <i className="fa fa-user-circle sign-in-icon"></i>
       <h1>Sign In</h1>
 
-      {isError && (
-        <div
-          className="error-message"
-          style={{ color: "red", fontSize: "14px" }}
-        >
-          {error}
-        </div>
-      )}
+      {isError && <div className="error-message">{error}</div>}
 
       <Input
         name="username"

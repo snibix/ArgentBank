@@ -294,75 +294,56 @@ body {
 
 /* style perso */
 
-.modal-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5); /* Fond semi-transparent */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
+.error-message {
+  font-size: 14px;
+  color: red;
+  padding: 1em 0;
 }
 
-.modal-content {
-  background-color: #fff;
-  padding: 20px;
-  border-radius: 8px;
-  max-width: 400px;
-  width: 100%;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.modal-content h2 {
-  font-size: 1.5rem;
-  margin-bottom: 20px;
-  text-align: center;
-  color: #00bc77;
-}
-
-.modal-content form {
+.form-edit-user {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  gap: 1em;
+  max-width: 1200px;
+  margin: auto;
 }
 
-.modal-content label {
-  font-size: 1rem;
-  margin-bottom: 5px;
-  color: #00bc77;
-  padding: 10px;
+.form-edit-user input {
+  padding: 0.5em;
 }
 
-.modal-content input {
-  padding: 10px;
-  margin-bottom: 15px;
-  font-size: 1rem;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+.input-edit {
+  display: flex;
+  justify-content: space-between;
+  max-width: 400px;
+  width: 100%;
+  margin: auto;
+}
+@media (max-width: 450px) {
+  .input-edit {
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+  }
+  .buttonsEdit {
+    flex-direction: column;
+    gap: 5px;
+    align-items: center;
+    width: 150px !important;
+  }
 }
 
-.modal-content button {
-  padding: 10px;
-  font-size: 1rem;
-  cursor: pointer;
-  border: none;
-  border-radius: 4px;
-  background-color: #00bc77;
-  color: white;
-  transition: background-color 0.3s;
-  margin-top: 10px;
+.buttonsEdit {
+  display: flex;
+  justify-content: space-evenly;
+  width: 340px;
+  margin: auto;
 }
 
-.modal-content button:hover {
-  background-color: #06a76c;
-}
-
-.modal-content button[type="button"] {
-  background-color: #6c757d;
-}
-
-.modal-content button[type="button"]:hover {
-  background-color: #5a6268;
+.buttonsEdit button {
+  padding: 0.5em;
+  min-width: 130px;
+  color: rgb(100, 22, 173);
+  border: solid 1px blueviolet;
 }
