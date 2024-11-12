@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { updateUser } from "./updateUser";
+import { updateUser } from "../thunks/updateUser";
 
 const authSlice = createSlice({
   name: "auth",
@@ -22,22 +22,13 @@ const authSlice = createSlice({
     },
   },
   extraReducers: (builder) => {
-    builder
-      .addCase(updateUser.pending, (state) => {
-        state.status = "loading";
-      })
-      .addCase(updateUser.fulfilled, (state, action) => {
-        state.status = "succeeded";
-        state.user = {
-          ...state.user,
-          firstName: action.payload.firstName,
-          lastName: action.payload.lastName,
-        };
-      })
-      .addCase(updateUser.rejected, (state, action) => {
-        state.status = "failed";
-        state.error = action.payload;
-      });
+    builder.addCase(updateUser.fulfilled, (state, action) => {
+      console.log(
+        "Mise à jour du profil utilisateur réussie :",
+        action.payload
+      );
+      state.user = action.payload.body;
+    });
   },
 });
 

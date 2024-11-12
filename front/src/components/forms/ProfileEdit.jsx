@@ -1,57 +1,58 @@
 import PropTypes from "prop-types";
-import { useState } from "react";
-import { useDispatch } from "react-redux";
-import { updateUser } from "../../../redux/slices/updateUser.js";
+import { useDispatch, useSelector } from "react-redux";
+import { updateUser } from "../../../redux/thunks/updateUser.js";
 
-function ProfileEdit({ isOpen, onClose, currentFirstName, currentLastName }) {
-  const [firstName, setFirstName] = useState(currentFirstName);
-  const [lastName, setLastName] = useState(currentLastName);
+function ProfileEdit({ onClose }) {
   const dispatch = useDispatch();
 
-  if (!isOpen) return null;
+  const user = useSelector((state) => state.auth.user);
 
-  const handleSave = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Action pour mettre à jour le nom dans le store Redux
-    dispatch(updateUser({ firstName, lastName }));
-    onClose();
+    const profil = {
+      firstName: e.target["firstName"].value,
+      lastName: e.target["lastName"].value,
+    };
+    dispatch(updateUser(profil))
+      .unwrap()
+      .then(() => {
+        onClose();
+      })
+      .catch((e) => {
+        console.error("Erreur lors de la mise à jour du profil:", e);
+      });
   };
 
   return (
-    <div className="modal-overlay">
-      <div className="modal-content">
-        <h2>Edit Name</h2>
-        <form onSubmit={handleSave}>
-          <div>
-            <label>First Name</label>
-            <input
-              type="text"
-              value={firstName}
-              onChange={(e) => setFirstName(e.target.value)}
-            />
-          </div>
-          <div>
-            <label>Last Name</label>
-            <input
-              type="text"
-              value={lastName}
-              onChange={(e) => setLastName(e.target.value)}
-            />
-          </div>
-          <button type="submit">Save</button>
-          <button type="button" onClick={onClose}>
-            Cancel
-          </button>
-        </form>
+    <form onSubmit={handleSubmit}>
+      <div>
+        <input
+          name="firstName"
+          type="text"
+          minLength={2}
+          required
+          placeholder={user.firstName}
+          label="First Name"
+        />
+        <input
+          name="lastName"
+          type="text"
+          minLength={2}
+          required
+          placeholder={user.lastName}
+          label="Last Name"
+        />
       </div>
-    </div>
+      <button type="submit">Save</button>
+      <button type="button" onClick={onClose}>
+        Cancel
+      </button>
+    </form>
   );
 }
 
 ProfileEdit.propTypes = {
-  isOpen: PropTypes.bool.isRequired,
-  onClose: PropTypes.func.isRequired,
-  currentFirstName: PropTypes.string.isRequired,
-  currentLastName: PropTypes.string.isRequired,
+  onClose: PropTypes.func,
 };
+
 export default ProfileEdit;

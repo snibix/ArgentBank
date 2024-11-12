@@ -13,12 +13,15 @@ body {
   min-height: 100vh;
 }
 
-.main {
-  flex: 1;
+#root {
+  position: relative;
+  display: flex;
+  flex-direction: column;
 }
 
 .bg-dark {
   background-color: #12002b;
+  padding: 2rem;
 }
 
 .sr-only {
@@ -170,7 +173,6 @@ body {
   background-color: white;
   width: 300px;
   margin: 0 auto;
-  margin-top: 3rem;
   padding: 2rem;
 }
 
@@ -289,18 +291,6 @@ body {
     width: 200px;
   }
 }
-/* .modal-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(0, 0, 0, 0.5);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 1000;
-} */
 
 /* style perso */
 
