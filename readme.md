@@ -1,8 +1,6 @@
 ArgentBank
 
-HTML5 CSS3 JavaScript
-
-Vite React React Router Redux React-Toastify
+Vite React React Router Redux 
 
 Projet 13 du parcours "Développeur d'application - JavaScript React" chez OpenClassroom.
 
