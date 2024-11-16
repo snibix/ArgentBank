@@ -31,17 +31,18 @@ npm install
 
 # Start local dev
 npm run dev
-Données
+
+# Données
 Une fois que vous avez lancez le script populate-db, vous devriez avoir deux utilisateurs dans votre base de donnée:
 
-Tony Stark
-First Name: Tony
-Last Name: Stark
-Email: tony@stark.com
-Password: password123
+1. Tony Stark <br>
+-First Name: Tony <br>
+-Last Name: Stark <br>
+-Email: tony@stark.com <br>
+-Password: password123 
 
-Steve Rogers
-First Name: Steve,
-Last Name: Rogers,
-Email: steve@rogers.com,
-Password: password456
+2. Steve Rogers<br>
++First Name: Steve.<br>
++Last Name: Rogers.<br>
++Email: steve@rogers.com.<br>
++Password: password456.<br>
