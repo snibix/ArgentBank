@@ -41,7 +41,7 @@ function SignIn() {
       />
       <Input
         name="password"
-        type="current-password"
+        type="password"
         minLength={2}
         required
         disabled={isLoading}

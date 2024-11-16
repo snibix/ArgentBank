@@ -294,6 +294,48 @@ body {
 
 /* style perso */
 
+.notFound {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+  text-align: center;
+  background-color: #f7f7f7;
+  flex-direction: column;
+  font-family: Arial, sans-serif;
+}
+
+.notFound h1 {
+  font-size: 6rem;
+  color: #e74c3c;
+  margin: 0;
+}
+
+.notFound p {
+  font-size: 1.5rem;
+  color: #555;
+  margin-top: 20px;
+}
+
+.notFound img {
+  width: 200px;
+}
+
+.notFound a {
+  margin-top: 30px;
+  padding: 12px 25px;
+  background-color: #00bc77;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+  font-size: 1.2rem;
+  transition: background-color 0.3s;
+}
+
+.notFound a:hover {
+  background-color: #1a996a;
+}
+
 .error-message {
   font-size: 14px;
   color: red;
@@ -344,6 +386,6 @@ body {
 .buttonsEdit button {
   padding: 0.5em;
   min-width: 130px;
-  color: rgb(100, 22, 173);
-  border: solid 1px blueviolet;
+  color: #00bc77;
+  border: solid 1px #00bc77;
 }
