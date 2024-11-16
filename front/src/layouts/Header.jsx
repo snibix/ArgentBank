@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { Link, NavLink } from "react-router-dom";
-import { logout } from "../../redux/slices/authSlice";
 import logo from "../assets/img/argentBankLogo.png";
+import { logout } from "../redux/slices/authSlice";
 
 function Header() {
   const auth = useSelector((state) => state.auth);

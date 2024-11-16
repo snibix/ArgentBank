@@ -1,13 +1,11 @@
 import PropTypes from "prop-types";
 import { useSelector } from "react-redux";
-import useUpdateProfil from "../../../services/useUpdateProfil.js";
+import useUpdateProfil from "../../services/useUpdateProfil";
 
 function ProfileEdit({ onClose }) {
   const { user } = useSelector((state) => state.auth);
   const { updateProfil, isLoading, isError, error } = useUpdateProfil();
-  // TODO: -faire les cas d'erreur du form
-  //TODO: empecher l'utilisateur lors du chargement
-  //TODO: modifier le style des message d'erreur et le style du profilEdit
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const profil = {
@@ -26,6 +24,7 @@ function ProfileEdit({ onClose }) {
   return (
     <form onSubmit={handleSubmit} className="form-edit-user">
       <div className="input-edit">
+        {isError && <div className="error-message">{error}</div>}
         <input
           name="firstName"
           type="text"
@@ -33,6 +32,7 @@ function ProfileEdit({ onClose }) {
           required
           placeholder={user.firstName}
           label="First Name"
+          disabled={isLoading}
         />
 
         <input
@@ -42,11 +42,14 @@ function ProfileEdit({ onClose }) {
           required
           placeholder={user.lastName}
           label="Last Name"
+          disabled={isLoading}
         />
       </div>
       <div className="buttonsEdit">
-        <button type="submit">Save</button>
-        <button type="button" onClick={onClose}>
+        <button type="submit" disabled={isLoading}>
+          Save
+        </button>
+        <button type="button" onClick={onClose} disabled={isLoading}>
           Cancel
         </button>
       </div>

@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { useLogin } from "../../../services/useLogin";
+import { useLogin } from "../../services/useLogin";
 import Button from "../Button";
 import Checkbox from "../Checkbox";
 import Input from "../Input";
